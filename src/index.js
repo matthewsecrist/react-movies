@@ -14,6 +14,10 @@ import store from './store';
 // Pages
 import Home from './containers/Home/';
 import Movie from './containers/Movie/';
+import FreeMovies from './containers/FreeMovies/';
+
+// css
+import './index.css'
 
 // Create the history for react-router-redux
 const history = syncHistoryWithStore(browserHistory, store)
@@ -24,6 +28,7 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/" exactly component={Home} />
         <Route path="/home" component={Home} />
+        <Route path="/free" component={FreeMovies} />
         <Route path="/movie/:movieId" component={Movie} />
       </Router>
   </Provider>,

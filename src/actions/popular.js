@@ -4,13 +4,13 @@ const GET_POPULAR_MOVIES_ERROR = "GET_POPULAR_MOVIES_ERROR";
 
 import { getPopularMovies } from '../utilities';
 
-export function loadPopularMovies() {
+export function loadPopularMovies(params) {
   return dispatch => {
     dispatch({
       type: GET_POPULAR_MOVIES
     });
 
-    getPopularMovies()
+    getPopularMovies(params)
       .then(res => dispatch(loadPopularMoviesSuccess(res.data.results)))
       .catch(err => dispatch(loadPopularMoviesError(err)));
   }

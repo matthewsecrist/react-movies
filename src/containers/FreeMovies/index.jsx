@@ -6,9 +6,9 @@ import { Link } from 'react-router';
 import MovieItem from '../../components/MovieItem'
 
 
-class Home extends Component {
+class FreeMovies extends Component {
   componentDidMount() {
-    this.props.loadPopularMovies();
+    this.props.loadPopularMovies("&sources=free");
   }
 
   render() {
@@ -16,7 +16,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h1><Link to="/free">Free</Link></h1>
+        <h1><Link to="/">Home</Link></h1>
         <div className="row center-xs">
           {movies.map(m => <MovieItem movie={m} key={m.id} />)}
         </div>
@@ -33,4 +33,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(FreeMovies);

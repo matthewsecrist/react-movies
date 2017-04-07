@@ -3,6 +3,10 @@ body {
   color: white;
 }
 
+a {
+  color: white;
+}
+
 .homeButton {
   color: white;
   font-size: 2em;

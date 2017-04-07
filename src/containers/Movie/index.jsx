@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import * as actions from '../../actions';
-import GenreTag from '../../components/GenreTag';
 import CastMember from '../../components/CastMember';
+import Stream from '../../components/Stream';
 import './index.css';
 
 class Movie extends Component {
@@ -18,6 +18,7 @@ class Movie extends Component {
     if (this.props.movie.isFetching) {
       return <div></div>
     } else {
+      const stream = movie.purchase_web_sources.concat(movie.subscription_web_sources)
       return (
         <div className="movie">
           <Link to="/" className="homeButton"><i className="fa fa-arrow-circle-o-left" /> Home</Link>
@@ -30,13 +31,20 @@ class Movie extends Component {
                 </td>
                 <td>
                   <h1 className="title">{movie.title}</h1>
+                  <div className="streamable">
+                    {movie.free_web_sources.length > 0 ? <p>Free Options</p> : <div></div>}
+                    {movie.free_web_sources.map(m => <Stream name={m.display_name} key={m.source} link={m.link} />)}
+                    <p>Paid Options</p>
+                    {stream.map(m => <Stream name={m.display_name} key={m.source} link={m.link} />)}
+                  </div>
                   <p>{movie.overview}</p>
+
                   <table className="cast">
                     <tbody>
                       <tr>
-                        <th>Directors</th>
-                        <th>Writers</th>
-                        <th>Cast</th>
+                        <th>Directed By</th>
+                        <th>Written By</th>
+                        <th>Cast Members</th>
                       </tr>
                       <tr>
                         <td>
