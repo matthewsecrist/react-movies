@@ -16,7 +16,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h1><Link to="/free">Free</Link></h1>
+        <h1>Home <Link to="/free">Free</Link></h1>
         <div className="row center-xs">
           {movies.map(m => <MovieItem movie={m} key={m.id} />)}
         </div>

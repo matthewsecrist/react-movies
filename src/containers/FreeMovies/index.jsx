@@ -16,7 +16,7 @@ class FreeMovies extends Component {
 
     return (
       <div>
-        <h1><Link to="/">Home</Link></h1>
+        <h1><Link to="/">Home</Link> Free</h1>
         <div className="row center-xs">
           {movies.map(m => <MovieItem movie={m} key={m.id} />)}
         </div>
