@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://api-public.guidebox.com/v2/movies";
+const API_URL = "https://api-public.guidebox.com/v2/movies";
 
 import config from '../config';
 
