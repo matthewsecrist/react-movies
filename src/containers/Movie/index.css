@@ -1,0 +1,48 @@
+body {
+  background: black;
+  color: white;
+}
+
+.homeButton {
+  color: white;
+  font-size: 2em;
+  text-decoration: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.detailsContainer {
+  padding: 50px;
+}
+
+.detailsContainer td {
+  vertical-align: top;
+}
+
+.detailsContainer a {
+  color: white;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 5em;
+  padding-bottom: 0px;
+  padding-left: 50px;
+  margin-bottom: 0px;
+}
+
+.genre {
+  font-size: .5em;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.cast {
+  text-align: left;
+  table-layout: auto;
+  width: 100%;
+}
+
+.cast td {
+  vertical-align: top;
+}
