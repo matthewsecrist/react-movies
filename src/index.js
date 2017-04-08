@@ -17,7 +17,7 @@ import Movie from './containers/Movie/';
 import FreeMovies from './containers/FreeMovies/';
 
 // css
-import './index.css'
+import '../semantic/dist/semantic.min.css';
 
 // Create the history for react-router-redux
 const history = syncHistoryWithStore(browserHistory, store)

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Label } from 'semantic-ui-react';
 
 const Stream = (props) => {
   return (
-    <a href={props.link} className="source"> {props.name} </a>
+    <Label basic>
+      <a href={props.link} target="_blank">{props.name}</a>
+    </Label>
   )
 }
 

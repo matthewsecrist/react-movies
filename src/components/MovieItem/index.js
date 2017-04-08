@@ -7,12 +7,10 @@ type Props = {
 
 const MovieItem = ({ movie }: Props) => {
   return (
-    <div className="col-xs-11 col-md-3">
-      <div className="box">
+    <div className="four wide column">
         <Link to={'/movie/' + movie.id}>
           <img src={movie.poster_400x570} width="100%" alt="movie"/>
         </Link>
-      </div>
     </div>
   )
 }

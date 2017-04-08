@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
-import { Link } from 'react-router';
 import MovieItem from '../../components/MovieItem'
+import Navbar from '../../components/Navbar';
 
 
 class Home extends Component {
@@ -16,8 +16,8 @@ class Home extends Component {
 
     return (
       <div>
-        <h1>Home <Link to="/free">Free</Link></h1>
-        <div className="row center-xs">
+        <Navbar />
+        <div className="ui centered grid container">
           {movies.map(m => <MovieItem movie={m} key={m.id} />)}
         </div>
       </div>
