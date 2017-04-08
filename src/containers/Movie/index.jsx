@@ -80,14 +80,16 @@ class Movie extends Component {
             </div>
           </div>
         </div>
+      </div>
+      <div className="ui centered stackable grid container">
+        <p className="ui header">More Like This</p>
         <div className="ui row">
-          <h1 className="ui huge header">Related Movies</h1>
-          <div className="fourteen wide stackable column">
-            {movie.related.slice(0, 10).map(m => <MovieItem movie={m} key={m.id} size="small" />)}
-          </div>
+          {movie.related.slice(0, 8).map(m => <MovieItem movie={m} key={m.id} size="small" />)}
         </div>
       </div>
     </div>
+
+
 
 
       );
