@@ -7,7 +7,7 @@ import Stream from '../../components/Stream';
 
 import Navbar from '../../components/Navbar';
 
-import { Image, Loader } from 'semantic-ui-react';
+import { Image, Loader, List } from 'semantic-ui-react';
 
 
 class Movie extends Component {
@@ -37,27 +37,37 @@ class Movie extends Component {
             <Image src={movie.poster_400x570} fluid />
           </div>
           <div className="eight wide column">
-            <h1>{movie.title}</h1>
+            <h1 className="ui huge header">{movie.title}</h1>
+            <List>
+              <List.Item>{movie.release_year}</List.Item>
+              <List.Item>{movie.rating}</List.Item>
+            </List>
             <p>{movie.overview}</p>
             <div className="streamable">
-              {movie.free_web_sources.length > 0 ?
-              <p>Free Options</p> : <span />} {movie.free_web_sources.map(m =>
+              {movie.free_web_sources.length > 0 ? <p className="ui header">Free Options</p> : <span />}
+              {movie.free_web_sources.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} />
               )}
-              <p>Paid Options</p>
+              <p className="ui header">Paid Options</p>
               {stream.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} />
               )}
             </div>
 
-          <h3>Directed By</h3>
+          <p className="ui header">Directed By</p>
+          <List>
             {movie.directors.map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
-          <h3>Written By</h3>
+          </List>
+          <p className="ui header">Written By</p>
+          <List>
             {movie.writers.map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
-          <h3>Starring</h3>
+          </List>
+          <p className="ui header">Starring</p>
           <div className="ui grid">
             <div className="eight wide column">
-              {movie.cast.slice(0, 10).map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
+              <List>
+                {movie.cast.slice(0, 10).map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
+              </List>
             </div>
             <div className="eight wide column">
               {movie.cast.slice(10, 20).map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
