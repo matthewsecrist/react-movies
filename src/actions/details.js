@@ -6,9 +6,9 @@ import { getMovieDetails } from '../utilities';
 
 export function loadMovieDetails(id) {
   return dispatch => {
-    dispatch({ type: LOAD_MOVIE_DETAILS });
+    dispatch({ type: LOAD_MOVIE_DETAILS })
 
-    getMovieDetails(id)
+    return getMovieDetails(id)
       .then(res => dispatch(loadMovieDetailsSuccess(res.data)))
       .catch(err => dispatch(loadMovieDetailsError(err)))
   }

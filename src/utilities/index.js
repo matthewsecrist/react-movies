@@ -11,14 +11,27 @@ export function getPopularMovies(params) {
 
 //http://api-public.guidebox.com/v2/movies/135934?api_key=YOUR_API_KEY
 //http://api-public.guidebox.com/v2/movies?api_key=YOUR_API_KEY&sources=free
-//http://api-public.guidebox.com/v2/movies?api_key=515ce266b75ac765a709d1cede86ace60bb4be3f?sources=free
 export function getMovieDetails(id) {
-  let formatId = "/" + id
-  return axios.get(formatRequest("movie", formatId));
+  return axios.all([getMovie(id), getRelatedMovies(id)])
+    .then(axios.spread(function(movie, related) {
+      movie.data.related = related.data.results
+      return movie
+    }))
+}
+
+export function getMovie(id) {
+  let url = "/" + id
+  return axios.get(formatRequest("movie", url))
+}
+
+// http://api-public.guidebox.com/v2/movies/135934/related?api_key=YOUR_API_KEY
+export function getRelatedMovies(id) {
+  let url = "/" + id + "/related"
+  return axios.get(formatRequest("movie", url))
 }
 
 // Used to generate a URL, ending up being:
-// http://api-public.guidebox.com/v2/movies?api_key=515ce266b75ac765a709d1cede86ace60bb4be3f&limit=10
+// http://api-public.guidebox.com/v2/movies?api_key=YOUR_API_KEY
 function formatRequest(type, params) {
   if(type === "list") {
     if(params) {

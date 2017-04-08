@@ -4,19 +4,25 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
 import CastMember from '../../components/CastMember';
 import Stream from '../../components/Stream';
-
 import Navbar from '../../components/Navbar';
+import MovieItem from '../../components/MovieItem';
 
 import { Image, Loader, List } from 'semantic-ui-react';
 
 
 class Movie extends Component {
-  constructor(props) {
-    super(props)
+  componentDidMount() {
     this.props.loadMovieDetails(this.props.params.movieId);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.movieId !== nextProps.params.movieId) {
+      this.props.loadMovieDetails(nextProps.params.movieId);
+    }
+  }
+
   render() {
+    console.log(this.props)
     const { movie } = this.props.movie
     if (this.props.movie.isFetching) {
       return (
@@ -72,6 +78,12 @@ class Movie extends Component {
             <div className="eight wide column">
               {movie.cast.slice(10, 20).map(m =><CastMember key={m.id} name={m.name} imdb={m.imdb} /> )}
             </div>
+          </div>
+        </div>
+        <div className="ui row">
+          <h1 className="ui huge header">Related Movies</h1>
+          <div className="fourteen wide stackable column">
+            {movie.related.slice(0, 10).map(m => <MovieItem movie={m} key={m.id} size="small" />)}
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Input } from 'semantic-ui-react';
 
 class Navbar extends React.Component {
   render() {
@@ -8,6 +8,9 @@ class Navbar extends React.Component {
       <Menu inverted className="fixed">
           <Menu.Item name="Top Movies" as={Link} to="/" />
           <Menu.Item name="Top Free Movies" as={Link} to="/free" />
+          <Menu.Item position="right">
+            <Input icon="search" placeholder="Search for a movie" />
+          </Menu.Item>
       </Menu>
 
     );

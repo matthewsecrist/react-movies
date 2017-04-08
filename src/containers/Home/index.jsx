@@ -18,7 +18,7 @@ class Home extends Component {
       <div>
         <Navbar />
         <div className="ui centered grid container">
-          {movies.map(m => <MovieItem movie={m} key={m.id} />)}
+          {movies.map(m => <MovieItem movie={m} key={m.id} size="large" />)}
         </div>
       </div>
     );
