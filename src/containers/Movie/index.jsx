@@ -22,7 +22,6 @@ class Movie extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { movie } = this.props.movie
     if (this.props.movie.isFetching) {
       return (
@@ -34,7 +33,7 @@ class Movie extends Component {
         </div>
       )
     } else {
-      const stream = movie.purchase_web_sources.concat(movie.subscription_web_sources)
+
       return (
         <div>
           <Navbar />
@@ -54,9 +53,13 @@ class Movie extends Component {
               {movie.free_web_sources.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} />
               )}
-              <p className="ui header">Paid Options</p>
-              {stream.map(m =>
+              {movie.subscription_web_sources.length > 0 ? <p className="ui header">Free with Subscription</p> : <span />}
+              {movie.subscription_web_sources.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} />
+              )}
+              <p className="ui header">Paid Options</p>
+              {movie.purchase_web_sources.map(m =>
+                <Stream name={m.display_name} key={m.source} link={m.link} price={m.formats ? m.formats : null} />
               )}
             </div>
 
