@@ -9,24 +9,23 @@ import { Loader } from 'semantic-ui-react';
 
 class Movies extends Component {
   componentDidMount() {
-    switch (this.props.params.moviesType) {
-      case "free":
-        this.props.loadPopularMovies("&sources=free");
-        break;
-      default:
-        this.props.loadPopularMovies();
-        break;
+    let url = "&sources=" + this.props.params.moviesType
+    if(this.props.params.moviesType === '') {
+      this.props.loadPopularMovies
+    } else {
+      console.log(url)
+      this.props.loadPopularMovies(url);
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.params.moviesType !== nextProps.params.moviesType) {
-      switch (nextProps.params.moviesType) {
-        case "free":
-          this.props.loadPopularMovies("&sources=free");
-          break;
-        default:
-          this.props.loadPopularMovies();
-          break;
+      let url = "&sources=" + nextProps.params.moviesType
+      if(nextProps.params.moviesType === ''){
+        this.props.loadPopularMovies();
+      } else {
+        console.log(url)
+        this.props.loadPopularMovies(url);
       }
     }
   }
