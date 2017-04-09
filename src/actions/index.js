@@ -1,2 +1,2 @@
 export * from './popular';
-export * from './details'
+export * from './details';

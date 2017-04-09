@@ -5,8 +5,6 @@ import * as actions from '../../actions';
 import MovieItem from '../../components/MovieItem'
 import Navbar from '../../components/Navbar';
 import { Loader } from 'semantic-ui-react';
-import { Link } from 'react-router';
-
 
 class Movies extends Component {
   componentDidMount() {
@@ -21,17 +19,12 @@ class Movies extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.params.moviesType !== nextProps.params.moviesType) {
       let url = "&sources=" + nextProps.params.moviesType
-      if(nextProps.params.moviesType === ''){
-        this.props.loadPopularMovies();
-      } else {
-        this.props.loadPopularMovies(url);
-      }
+      this.props.loadPopularMovies(url);
     }
   }
 
   render() {
     const { movies } = this.props.movies
-    console.log(movies)
     if (this.props.movies.isFetching) {
       return (
         <div>
@@ -42,7 +35,6 @@ class Movies extends Component {
         </div>
       )
     } else if (movies.length === 0) {
-      console.log("here.")
       return (
         <div>
           <Navbar />
