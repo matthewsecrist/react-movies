@@ -46,6 +46,7 @@ class Movie extends Component {
             <List>
               <List.Item>{movie.release_year}</List.Item>
               <List.Item>{movie.rating}</List.Item>
+              <List.Item><a href={"http://www.imdb.com/title/" + movie.imdb } target="_blank">IMDB</a></List.Item>
             </List>
             <p>{movie.overview}</p>
             <div className="streamable">

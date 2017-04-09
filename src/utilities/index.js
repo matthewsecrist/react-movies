@@ -6,19 +6,19 @@ import config from '../config';
 
 // Get popular movies.
 export function getPopularMovies(params) {
-  return axios.get(formatRequest("list", params));
+  return axios.get(formatRequest("list", params))
 }
 
-//http://api-public.guidebox.com/v2/movies/135934?api_key=YOUR_API_KEY
-//http://api-public.guidebox.com/v2/movies?api_key=YOUR_API_KEY&sources=free
 export function getMovieDetails(id) {
   return axios.all([getMovie(id), getRelatedMovies(id)])
     .then(axios.spread(function(movie, related) {
       movie.data.related = related.data.results
       return movie
-    }))
+    })
+  )
 }
 
+//http://api-public.guidebox.com/v2/movies/135934?api_key=YOUR_API_KEY
 export function getMovie(id) {
   let url = "/" + id
   return axios.get(formatRequest("movie", url))
@@ -35,9 +35,9 @@ export function getRelatedMovies(id) {
 function formatRequest(type, params) {
   if(type === "list") {
     if(params) {
-      return API_URL + '?api_key=' + config.API_KEY + params + '&limit=40'
+      return API_URL + '?api_key=' + config.API_KEY + params + '&limit=100'
     } else {
-      return API_URL + '?api_key=' + config.API_KEY + '&limit=40'
+      return API_URL + '?api_key=' + config.API_KEY + '&limit=100'
     }
   } else {
     return API_URL + params + '?api_key=' + config.API_KEY

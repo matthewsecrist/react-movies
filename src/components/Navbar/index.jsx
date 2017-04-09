@@ -36,8 +36,7 @@ class Navbar extends React.Component {
               <Dropdown.Item as={Link} to="/movies/shout_factory_tv">Shout Factory TV</Dropdown.Item>
               <Dropdown.Item as={Link} to="/movies/snagfilms">Snagfilms</Dropdown.Item>
               <Dropdown.Item as={Link} to="/movies/vudu_free">Vudu</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/movies/xfinity">Xfinity</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/movies/viewster">viewster</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/movies/viewster">Viewster</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 

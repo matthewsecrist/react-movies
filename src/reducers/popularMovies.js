@@ -19,6 +19,9 @@ export default function popularMovies(state = {
       }
     case GET_POPULAR_MOVIES_ERROR:
     default:
-      return state;
+      return {
+        isFetching: false,
+        movies: []
+      }
   }
 }

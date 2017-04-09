@@ -5,15 +5,15 @@ import * as actions from '../../actions';
 import MovieItem from '../../components/MovieItem'
 import Navbar from '../../components/Navbar';
 import { Loader } from 'semantic-ui-react';
+import { Link } from 'react-router';
 
 
 class Movies extends Component {
   componentDidMount() {
     let url = "&sources=" + this.props.params.moviesType
     if(this.props.params.moviesType === '') {
-      this.props.loadPopularMovies
+      this.props.loadPopularMovies()
     } else {
-      console.log(url)
       this.props.loadPopularMovies(url);
     }
   }
@@ -24,7 +24,6 @@ class Movies extends Component {
       if(nextProps.params.moviesType === ''){
         this.props.loadPopularMovies();
       } else {
-        console.log(url)
         this.props.loadPopularMovies(url);
       }
     }
@@ -32,12 +31,23 @@ class Movies extends Component {
 
   render() {
     const { movies } = this.props.movies
+    console.log(movies)
     if (this.props.movies.isFetching) {
       return (
         <div>
           <Navbar />
           <div className="ui grid">
             <Loader active size="massive" />
+          </div>
+        </div>
+      )
+    } else if (movies.length === 0) {
+      console.log("here.")
+      return (
+        <div>
+          <Navbar />
+          <div className="ui centered grid">
+            <h1>We didn't find any movies from {this.props.params.moviesType}.</h1>
           </div>
         </div>
       )
