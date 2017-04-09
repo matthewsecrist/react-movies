@@ -57,7 +57,7 @@ class Movie extends Component {
               {movie.subscription_web_sources.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} />
               )}
-              <p className="ui header">Paid Options</p>
+              {movie.purchase_web_sources.length > 0 ? <p className="ui header">Rent or Buy</p> : <span />}
               {movie.purchase_web_sources.map(m =>
                 <Stream name={m.display_name} key={m.source} link={m.link} price={m.formats ? m.formats : null} />
               )}
