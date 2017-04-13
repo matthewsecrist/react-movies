@@ -10,7 +10,7 @@ import MovieItem from '../../components/MovieItem';
 import { Image, Loader, List } from 'semantic-ui-react';
 
 
-class Movie extends Component {
+export class Movie extends Component {
   componentDidMount() {
     this.props.loadMovieDetails(this.props.params.movieId);
   }

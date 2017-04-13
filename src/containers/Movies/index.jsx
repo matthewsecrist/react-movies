@@ -6,7 +6,7 @@ import MovieItem from '../../components/MovieItem'
 import Navbar from '../../components/Navbar';
 import { Loader } from 'semantic-ui-react';
 
-class Movies extends Component {
+export class Movies extends Component {
   componentDidMount() {
     let url = "&sources=" + this.props.params.moviesType
     if(this.props.params.moviesType === '') {
