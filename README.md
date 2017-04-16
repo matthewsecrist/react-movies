@@ -10,12 +10,11 @@ Built using:
 
 # Features
 
-* Display a list of top movies and posters
-* Display a list of free movies and posters
-* Detail screen shows where to purchase or stream for free
+* Navbar shows the different providers that it can list movies from, seperated between Paid options (iTunes, Amazon), Stream with Subscription (Netflix, Amazon Prime) and Free.
+* Detail screen shows where to purchase or stream for free, along with links to the pages.
+* Related movies in the movie details.
 
 # Still to do
 
 * Search movies
 * Details for actors, writers, directors and links to movies with them in it
-* Related movies in the movie details.
